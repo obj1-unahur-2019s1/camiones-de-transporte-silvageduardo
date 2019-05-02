@@ -1,0 +1,28 @@
+import cosas.*
+import camion.*
+/*1ro obj ladrillos arena bateria
+ * 2do puedecircularenruta
+ * parte agregados al camion
+ * los otros objetos
+ */
+
+test "peso total,cargar y descargar" {
+	camion.cargar(knightRider)
+	assert.equals(1500,camion.pesoTotal())
+	camion.cargar(bumblebee)
+	assert.equals(2300,camion.pesoTotal())
+	camion.descargar(knightRider)
+	assert.equals(1800,camion.pesoTotal())
+	camion.cargar(bateriaAntiaerea)
+	assert.equals(2100,camion.pesoTotal())
+}
+test "excedido de peso"{
+	6.times{ i => camion.cargar(bumblebee)}
+	
+	assert.equals(5800,camion.pesoTotal())
+}
+test "objeto peligroso"{
+	camion.cargar(bumblebee)
+	
+	assert.equals([bumblebee],camion.objetosPeligrosos(10))
+}
