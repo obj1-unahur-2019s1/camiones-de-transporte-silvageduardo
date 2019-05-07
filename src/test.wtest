@@ -6,23 +6,34 @@ import camion.*
  * los otros objetos
  */
 
+test "crear 1 camion"{
+	var camion1 = new Camion()
+		
+	assert.equals(1000, camion1.pesoTotal())}
+		
 test "peso total,cargar y descargar" {
-	camion.cargar(knightRider)
-	assert.equals(1500,camion.pesoTotal())
-	camion.cargar(bumblebee)
-	assert.equals(2300,camion.pesoTotal())
-	camion.descargar(knightRider)
-	assert.equals(1800,camion.pesoTotal())
-	camion.cargar(bateriaAntiaerea)
-	assert.equals(2100,camion.pesoTotal())
+	var camion1 = new Camion()
+	
+	camion1.cargar(knightRider)
+	assert.equals(1500,camion1.pesoTotal())
+	camion1.cargar(bumblebee)
+	assert.equals(2300,camion1.pesoTotal())
+	camion1.descargar(knightRider)
+	assert.equals(1800,camion1.pesoTotal())
+	camion1.cargar(bateriaAntiaerea)
+	assert.equals(2100,camion1.pesoTotal())
 }
 test "excedido de peso"{
-	6.times{ i => camion.cargar(bumblebee)}
+	var camion1 = new Camion()
 	
-	assert.equals(5800,camion.pesoTotal())
+	6.times{ i => camion1.cargar(bumblebee)}
+	
+	assert.equals(1800,camion1.pesoTotal())
 }
 test "objeto peligroso"{
-	camion.cargar(bumblebee)
+	var camion1 = new Camion()
 	
-	assert.equals([bumblebee],camion.objetosPeligrosos(10))
+	camion1.cargar(bumblebee)
+	
+	assert.equals(#{bumblebee},camion1.objetosPeligrosos(10))
 }
